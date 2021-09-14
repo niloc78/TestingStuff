@@ -1,9 +1,11 @@
 package com.example.testingstuff
 
 import android.util.Log
-import io.reactivex.Observable
-import io.reactivex.rxkotlin.toFlowable
-import io.reactivex.rxkotlin.toObservable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.kotlin.toFlowable
+
+import io.reactivex.rxjava3.kotlin.toObservable
+
 import org.junit.Test
 
 import org.junit.Assert.*

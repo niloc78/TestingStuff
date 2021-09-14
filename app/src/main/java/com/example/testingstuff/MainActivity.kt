@@ -3,9 +3,12 @@ package com.example.testingstuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonElement
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.core.Observable
@@ -17,8 +20,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 import java.util.concurrent.TimeUnit
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    //val model : ErrandModel2 by viewModels()
     private var mDisposable: CompositeDisposable = CompositeDisposable()
 
     private val testAdapter = TestAdapter()

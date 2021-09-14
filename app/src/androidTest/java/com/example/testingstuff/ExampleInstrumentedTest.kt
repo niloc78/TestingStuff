@@ -3,20 +3,19 @@ package com.example.testingstuff
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.Observables
-import io.reactivex.rxkotlin.toFlowable
-import io.reactivex.rxkotlin.toObservable
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+
+
+import io.reactivex.rxjava3.kotlin.toFlowable
+import io.reactivex.rxjava3.kotlin.toObservable
+import io.reactivex.rxjava3.core.Observable
+
 
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
+
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -52,6 +51,7 @@ class ExampleInstrumentedTest {
     }
     @Test
     fun coldTest() {
+
         val observable = Observable.interval(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread()).timeInterval()
         Thread.sleep(5000)
         observable.subscribe{ i ->
@@ -69,51 +69,51 @@ class ExampleInstrumentedTest {
         }
     }
 
-    @Test
-    fun subscribeTest() {
-        val observable = Observable.just(1,2,3)
-        val observer = object : Observer<Int> {
-            override fun onSubscribe(d: Disposable) {
-                Log.d("observer onsubscribe", "subscribed")
-            }
-
-            override fun onNext(t: Int) {
-                Log.d("emitted onNext int", "$t")
-            }
-
-            override fun onError(e: Throwable) {
-                Log.d("observable error", "error produced")
-            }
-
-            override fun onComplete() {
-                Log.d("observable complete", "completed")
-            }
-
-        }
-        observable.subscribe(observer)
-//        val sub = object: Subscriber<Int>{
-//            override fun onSubscribe(s: Subscription?) {
-//                TODO("Not yet implemented")
+//    @Test
+//    fun subscribeTest() {
+//        val observable = Observable.just(1,2,3)
+//        val observer = object : Observer<Int> {
+//            override fun onSubscribe(d: Disposable) {
+//                Log.d("observer onsubscribe", "subscribed")
 //            }
 //
-//            override fun onNext(t: Int?) {
-//                TODO("Not yet implemented")
+//            override fun onNext(t: Int) {
+//                Log.d("emitted onNext int", "$t")
 //            }
 //
-//            override fun onError(t: Throwable?) {
-//                TODO("Not yet implemented")
+//            override fun onError(e: Throwable) {
+//                Log.d("observable error", "error produced")
 //            }
 //
 //            override fun onComplete() {
-//                TODO("Not yet implemented")
+//                Log.d("observable complete", "completed")
 //            }
 //
 //        }
-
-//        observable.subscribe { i ->
-//            Log.d("int", "$i")
-//        }
-    }
+//        observable.subscribe(observer)
+////        val sub = object: Subscriber<Int>{
+////            override fun onSubscribe(s: Subscription?) {
+////                TODO("Not yet implemented")
+////            }
+////
+////            override fun onNext(t: Int?) {
+////                TODO("Not yet implemented")
+////            }
+////
+////            override fun onError(t: Throwable?) {
+////                TODO("Not yet implemented")
+////            }
+////
+////            override fun onComplete() {
+////                TODO("Not yet implemented")
+////            }
+////
+////        }
+//
+////        observable.subscribe { i ->
+////            Log.d("int", "$i")
+////        }
+//    }
 
 
 }
